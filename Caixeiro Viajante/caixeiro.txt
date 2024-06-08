@@ -1,0 +1,40 @@
+Inicio
+    int: num_cidades,i,j, atual, cidade_mais_perto;
+    Real: Menor, distacia_percorrida;
+    leia (num_cidades)
+    Tipo M1: Matriz[1,...,num_cidades][1,2]Reais; // matriz de latitude,longitude dos pontos(sinais)
+    Tipo M2: Matriz[1,...,num_cidades][1,...,num_cidades]Reais; // matriz de distância dos pontos
+    Tipo V: Vetor[1,...,num_cidades+1]inteiro // vetor da rota percorrida
+    M1: cidades;
+    M2: distancias;
+    V:caminho;
+    distacia_percorrida <- 0; // colocando 0 para fazer o somatório dentro do para
+    para i de 1 ate num_cidades em passo 1
+        caminho[i] <- 0; // colocando 0 em todas as cidades do vetor para dizer que não foi visitada
+        para j de 1 ate num_cidades em passo 1
+            faça 
+                distancias[i][j] <- (cidades[i][1]**2 - cidades[j][1]**2 + cidades[i][2]**2 - cidades[j][2]**2)**1/2 // distância euclidiana
+            fim para
+    leia(atual); // cidade origem
+    visitados[atual] <- 1; // colocando 1 para dizer que já foi visitada
+    para i de 2 ate (num_cidades) em passo 1:
+        faça
+            Menor <- 10000000; 
+            cidade_mais_perto <- 0; // número aleatório porque a cidade mais perto não foi definida ainda
+            para j de 1 ate num_cidades em passo 1:
+                faça
+                    se distancias[atual][j] < menor e caminho[j] = 0 // menor distância e 0, para dizer que não foi visitada ainda
+                        entao 
+                            cidade_mais_perto <- j; 
+                            menor <- distancias[i][j];
+                        fim se
+                fim para
+            caminho[cidade_mais_perto] <- i;
+            distacia_percorrida <- distacia_percorrida + distancias[atual][cidade_mais_perto]; // voltando para a cidade de origem no final
+            atual <- cidade_mais_perto;
+        fim para
+    caminho[num_cidades+1] <- caminho[1]; // adicionando ao vetor caminho, a cidade origem no final
+    distacia_percorrida <- distacia_percorrida + distancias[atual][caminho[1]];
+    escreva(caminho);
+    escreva(distacia_percorrida);
+fim
