@@ -13,7 +13,7 @@ df = pd.read_excel(arquivo)
 num_columns = len(df.columns)
 
 # Define o número de colunas na grade de subplots
-ncols = 5
+ncols = 4
 # Calcula o número de linhas necessárias para a grade de subplots
 nrows = math.ceil(num_columns / ncols)
 
@@ -27,15 +27,13 @@ axes = axes.flatten()
 # Itera sobre cada coluna no DataFrame
 for i, column in enumerate(df.columns):
     # Plota a contagem de valores da coluna atual como um gráfico de barras no eixo correspondente do subplot
-    df[column].value_counts().plot(kind='bar', ax=axes[i], fontsize=8)  
+    df[column].value_counts().plot(kind='barh', ax=axes[i], fontsize=8)  
     # Define o título para o subplot atual
     axes[i].set_title(f'Frequencia em {column}', fontsize=10) 
-    # Define o rótulo do eixo x para o subplot atual
-    axes[i].set_xlabel(column, fontsize=8)  
     # Define o rótulo do eixo y para o subplot atual
-    axes[i].set_ylabel('Frequencia', fontsize=8)  
+    axes[i].set_xlabel('Frequencia', fontsize=8)  
     # Rotaciona os rótulos do eixo x para melhor legibilidade e define o tamanho da fonte
-    axes[i].tick_params(axis='x', rotation=90, labelsize=8) 
+    axes[i].tick_params(axis='x', labelsize=8) 
 
 # Ajusta o layout dos subplots para evitar sobreposição
 plt.tight_layout()
