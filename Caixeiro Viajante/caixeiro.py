@@ -15,7 +15,6 @@ def caixeiro(matriz_distancias):
     for i in range(1,4):
         Menor=float("inf")
         cidade_mais_perto=None
-
         for j in range(4):
             if matriz_distancias[atual][j] < Menor and caminho[j] == 0:
                 cidade_mais_perto = j

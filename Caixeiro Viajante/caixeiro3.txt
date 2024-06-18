@@ -1,0 +1,94 @@
+Questao A
+
+
+Inicio
+    tipo M1: Matriz[1,...,4][1,...,4]reais;
+    tipo V1: Vetor[1,..,4]reais;
+    tipo M2: Matriz[1,..,4][1,2]Reais;
+    inteiro : i,j,proxa,atual;
+    Real: Menor,distacia_percorrida;
+    M1:Distancias;
+    V:Visitados;
+    leia(distancias)   
+    M2: rota
+
+
+    para i de 2 ate 4 em passo 1:
+        faça   
+            atual <- i
+            visitados <- [i,0,0,0]
+            menor <- 10000000
+            prox <- i
+            para j de 1 ate 4 em passo 1:
+                faça
+                    se distancias[i][j] < menor e visitados[j] = 0:
+                        entao
+                            prox = j
+                        fim se
+                    distacia_percorrida <- distacia_percorrida + distancias[i][prox];
+                    atual = prox;
+                    visitados[atual] <- 1;
+                fim para
+            rota[i][1]<- visitados;
+            rota[i][2] <- distacia_percorrida;
+        fim para
+    menor <- 100000;
+    para i de 1 ate 4:
+        faça
+            se rota[i][2] < menor
+                entao
+                    atual = i;
+                fim se
+        fim se
+    escreva("A melhor rota é");
+    escreva(rota[atual][1]);
+    escreva("a distancia percorrida foi")
+    escreva(rota[atual][2])
+fim
+
+
+Questao B
+
+Inicio
+    tipo M1: Matriz[1,...,4][1,...,4]reais;
+    tipo V1: Vetor[1,..,4]reais;
+    tipo M2: Matriz[1,..,4][1,2]Reais;
+    inteiro : i,j,proxa,atual,penultima;
+    Real: Menor,distacia_percorrida;
+    M1:Distancias;
+    V:Visitados;
+    leia(distancias)   
+    M2: rota
+
+    para i de 1 ate 4 em passo 1:
+        faça   
+            atual <- i
+            visitados <- [i,0,1,0]
+            menor <- 10000000
+            prox <- i
+            para j de 1 ate 4 em passo 1:
+                faça
+                    se distancias[i][j] < menor e visitados[j] = 0 e j <> visitados[i]:
+                        entao
+                            prox = j
+                        fim se
+                    distacia_percorrida <- distacia_percorrida + distancias[i][prox];
+                    atual = prox;
+                    visitados[atual] <- 1;
+                fim para
+            rota[i][1]<- visitados;
+            rota[i][2] <- distacia_percorrida;
+        fim para
+    menor <- 100000;
+    para i de 1 ate 4:
+        faça
+            se rota[i][2] < menor
+                entao
+                    atual = i;
+                fim se
+        fim se
+    escreva("A melhor rota é");
+    escreva(rota[atual][1]);
+    escreva("a distancia percorrida foi")
+    escreva(rota[atual][2])
+fim
